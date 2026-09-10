@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>whalegames</title>
+    <script>
+      // Subdomain redirects. App Platform static sites cannot redirect
+      // server-side to external hosts, so the page does it before painting.
+      (function () {
+        var map = {
+          'basho.whalegames.net': 'https://basho.dev',
+          'blockulator.whalegames.net': 'https://blockulator.com/#/games',
+        };
+        var target = map[location.hostname];
+        if (target) location.replace(target);
+      })();
+    </script>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0b0d12;
+        --fg: #e7e4dc;
+        --muted: #8b8f9a;
+        --accent: #f59e0b;
+      }
+      html,
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font: 17px/1.5 system-ui, -apple-system, 'Segoe UI', sans-serif;
+      }
+      main {
+        min-height: 100svh;
+        display: grid;
+        place-content: center;
+        padding: 24px;
+        box-sizing: border-box;
+      }
+      h1 {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-weight: 400;
+        font-size: 2.4rem;
+        letter-spacing: 0.02em;
+        margin: 0 0 6px;
+      }
+      p {
+        margin: 0 0 32px;
+        color: var(--muted);
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 12px;
+        min-width: min(420px, 100%);
+      }
+      a {
+        display: block;
+        padding: 16px 20px;
+        border: 1px solid #23262e;
+        border-radius: 10px;
+        color: var(--fg);
+        text-decoration: none;
+        transition: border-color 0.15s ease;
+      }
+      a:hover,
+      a:focus-visible {
+        border-color: var(--accent);
+        outline: none;
+      }
+      a strong {
+        display: block;
+        font-weight: 600;
+      }
+      a span {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      footer {
+        margin-top: 40px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>whalegames</h1>
+      <p>Small games and experiments.</p>
+      <ul>
+        <li>
+          <a href="https://drunkenrobot.whalegames.net">
+            <strong>The Drunken Robot's Journey Home</strong>
+            <span>A stumbling, accordion-powered platformer with a generative folk soundtrack.</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://basho.whalegames.net">
+            <strong>basho</strong>
+            <span>Sumo for language models.</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://blockulator.whalegames.net">
+            <strong>blockulator</strong>
+            <span>Games at blockulator.com.</span>
+          </a>
+        </li>
+      </ul>
+      <footer>whalegames.net</footer>
+    </main>
+  </body>
+</html>
