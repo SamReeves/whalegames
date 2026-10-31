@@ -8,3 +8,4 @@ Landing page for whalegames.net plus client-side redirects for its subdomains. S
 | basho.whalegames.net | https://basho.dev |
 | blockulator.whalegames.net | https://blockulator.com/#/games |
 | drunkenrobot.whalegames.net | separate app (SamReeves/drunken-robot) |
+| sheep.whalegames.net | separate app (SamReeves/sheep) |
