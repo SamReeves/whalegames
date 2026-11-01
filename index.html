@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>whalegames</title>
     <script>
       // Subdomain redirects. App Platform static sites cannot redirect
@@ -16,107 +16,76 @@
         if (target) location.replace(target);
       })();
     </script>
-    <style>
-      :root {
-        color-scheme: dark;
-        --bg: #0b0d12;
-        --fg: #e7e4dc;
-        --muted: #8b8f9a;
-        --accent: #f59e0b;
-      }
-      html,
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--fg);
-        font: 17px/1.5 system-ui, -apple-system, 'Segoe UI', sans-serif;
-      }
-      main {
-        min-height: 100svh;
-        display: grid;
-        place-content: center;
-        padding: 24px;
-        box-sizing: border-box;
-      }
-      h1 {
-        font-family: Georgia, 'Times New Roman', serif;
-        font-weight: 400;
-        font-size: 2.4rem;
-        letter-spacing: 0.02em;
-        margin: 0 0 6px;
-      }
-      p {
-        margin: 0 0 32px;
-        color: var(--muted);
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: grid;
-        gap: 12px;
-        min-width: min(420px, 100%);
-      }
-      a {
-        display: block;
-        padding: 16px 20px;
-        border: 1px solid #23262e;
-        border-radius: 10px;
-        color: var(--fg);
-        text-decoration: none;
-        transition: border-color 0.15s ease;
-      }
-      a:hover,
-      a:focus-visible {
-        border-color: var(--accent);
-        outline: none;
-      }
-      a strong {
-        display: block;
-        font-weight: 600;
-      }
-      a span {
-        color: var(--muted);
-        font-size: 0.92rem;
-      }
-      footer {
-        margin-top: 40px;
-        color: var(--muted);
-        font-size: 0.85rem;
-      }
-    </style>
+    <meta name="description" content="Small games and experiments." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f3f4f0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0c0e10" media="(prefers-color-scheme: dark)" />
+    <!-- The look is sdr-ui 0.9.0 (securedataresearch/sdr-ui), shared by every Secure Data Research site, pinned
+         here with its integrity hashes. To move to a new release: deno run -A ../sdr-ui/tools/pin.ts X.Y.Z, then replace
+         the version, the three hashes and the critical colours below. -->
+    <style id="ui-critical">html{background:#f3f4f0;color:#1b1c1c}@media (prefers-color-scheme:dark){html:not([data-theme=light]){background:#0c0e10;color:#e2e3df}}@view-transition{navigation:auto}</style>
+    <script src="https://ui.securedataresearch.net/v0.9.0/boot.js" integrity="sha384-DtK/h6DTZ6qK7ORBVT2ehLYnbmj0kRyng894/ISM6ICFmGSHKyMOkBaXXN/eH4g3" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://ui.securedataresearch.net" crossorigin />
+    <link rel="preload" href="https://ui.securedataresearch.net/v0.9.0/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="https://ui.securedataresearch.net/v0.9.0/sdr-ui.css" integrity="sha384-MxgV9D7CbQ9P7hmOUBz2qrsCKKFeW+geQbgy18/ed1kQbPEUVIPtnZF6Z5OO0ZqT" crossorigin="anonymous" />
+    <script src="https://ui.securedataresearch.net/v0.9.0/transitions.js" integrity="sha384-jCJjdzpoq7ZJFM5B2ij/USrZWs+rmfEMAWlzH5TMRFNQK0Sp0I1yYalQD3qKnePJ" crossorigin="anonymous" defer></script>
   </head>
   <body>
-    <main>
-      <h1>whalegames</h1>
-      <p>Small games and experiments.</p>
-      <ul>
-        <li>
-          <a href="https://sheep.whalegames.net">
-            <strong>Three Sheep</strong>
-            <span>A meadow painted live, one brushstroke at a time. Three sheep, three wishes.</span>
+    <div class="ui-topbar">
+      <header class="ui-top">
+        <a class="ui-brand" href="/" aria-label="whalegames home">whalegames</a>
+        <nav class="ui-links" aria-label="Games">
+          <a class="ui-optional" href="https://sheep.whalegames.net">Three Sheep</a>
+          <a class="ui-optional" href="https://drunkenrobot.whalegames.net">Drunken Robot</a>
+          <a class="ui-optional" href="https://basho.whalegames.net">basho</a>
+          <a class="ui-optional" href="https://blockulator.whalegames.net">blockulator</a>
+        </nav>
+      </header>
+    </div>
+    <div class="ui-page">
+      <main class="ui-wrap">
+        <header class="ui-banner ui-banner--hero">
+          <div class="ui-banner-inner">
+            <h1>whalegames</h1>
+            <p class="ui-lead">Small games and experiments.</p>
+            <p class="ui-actions"><a class="ui-btn ui-btn--primary" href="#games">Play</a></p>
+          </div>
+        </header>
+        <section class="ui-section" id="games">
+          <h2 class="ui-section-title">Games.</h2>
+          <div class="ui-grid">
+          <a class="ui-card ui-card--lift" href="https://sheep.whalegames.net">
+            <p class="ui-label">sheep.whalegames.net</p>
+            <h3>Three Sheep</h3>
+            <p>A meadow painted live, one brushstroke at a time. Three sheep, three wishes.</p>
           </a>
-        </li>
-        <li>
-          <a href="https://drunkenrobot.whalegames.net">
-            <strong>The Drunken Robot's Journey Home</strong>
-            <span>A stumbling, accordion-powered platformer with a generative folk soundtrack.</span>
+          <a class="ui-card ui-card--lift" href="https://drunkenrobot.whalegames.net">
+            <p class="ui-label">drunkenrobot.whalegames.net</p>
+            <h3>The Drunken Robot's Journey Home</h3>
+            <p>A stumbling, accordion-powered platformer with a generative folk soundtrack.</p>
           </a>
-        </li>
-        <li>
-          <a href="https://basho.whalegames.net">
-            <strong>basho</strong>
-            <span>Sumo for language models.</span>
+          <a class="ui-card ui-card--lift" href="https://basho.whalegames.net">
+            <p class="ui-label">basho.dev</p>
+            <h3>basho</h3>
+            <p>Sumo for language models.</p>
           </a>
-        </li>
-        <li>
-          <a href="https://blockulator.whalegames.net">
-            <strong>blockulator</strong>
-            <span>Games at blockulator.com.</span>
+          <a class="ui-card ui-card--lift" href="https://blockulator.whalegames.net">
+            <p class="ui-label">blockulator.com</p>
+            <h3>blockulator</h3>
+            <p>Games at blockulator.com.</p>
           </a>
-        </li>
-      </ul>
-      <footer>whalegames.net</footer>
-    </main>
+          </div>
+        </section>
+      </main>
+      <footer class="ui-foot ui-wrap">
+        <nav aria-label="More">
+          <a href="https://securedataresearch.net">Secure Data Research</a>
+          <a href="https://blockulator.com">blockulator.com</a>
+          <a href="https://basho.dev">basho.dev</a>
+          <button class="ui-theme" data-ui-theme type="button">theme: auto</button>
+        </nav>
+        <p>whalegames.net</p>
+      </footer>
+    </div>
   </body>
 </html>
