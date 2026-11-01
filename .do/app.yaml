@@ -20,6 +20,10 @@ domains:
 - domain: blockulator.whalegames.net
   type: ALIAS
   zone: whalegames.net
+# the game's old subdomain: index.html's redirect map sends it to /drunken-robot/
+- domain: drunkenrobot.whalegames.net
+  type: ALIAS
+  zone: whalegames.net
 ingress:
   rules:
   # longest prefix first; the prefix is stripped, so /drunken-robot/assets/x.js is the game's dist/assets/x.js
