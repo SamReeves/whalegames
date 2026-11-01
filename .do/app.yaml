@@ -1,0 +1,53 @@
+# whalegames on App Platform: this file is the truth. Apply with
+#   doctl apps update 61f660f9-497e-4dcc-baf0-0067a3a1cdf9 --spec .do/app.yaml
+# (no secrets here). Every static game is a component of this one app at its own path, so a new game is a new
+# component, not a new app: App Platform charges for static apps beyond the first three, not for components.
+# A game's old subdomain, if it has one, points here and the landing's redirect map (index.html) sends it on.
+name: whalegames
+region: nyc
+features:
+- buildpack-stack=ubuntu-22
+domains:
+- domain: whalegames.net
+  type: PRIMARY
+  zone: whalegames.net
+- domain: www.whalegames.net
+  type: ALIAS
+  zone: whalegames.net
+- domain: basho.whalegames.net
+  type: ALIAS
+  zone: whalegames.net
+- domain: blockulator.whalegames.net
+  type: ALIAS
+  zone: whalegames.net
+ingress:
+  rules:
+  # longest prefix first; the prefix is stripped, so /drunken-robot/assets/x.js is the game's dist/assets/x.js
+  - component:
+      name: drunken-robot
+    match:
+      path:
+        prefix: /drunken-robot
+  - component:
+      name: site
+    match:
+      path:
+        prefix: /
+static_sites:
+- name: site
+  github:
+    repo: SamReeves/whalegames
+    branch: main
+    deploy_on_push: true
+  output_dir: /
+  index_document: index.html
+  catchall_document: index.html
+- name: drunken-robot
+  github:
+    repo: SamReeves/drunken-robot
+    branch: main
+    deploy_on_push: true
+  build_command: npm ci && npm run build
+  output_dir: dist
+  index_document: index.html
+  catchall_document: index.html
