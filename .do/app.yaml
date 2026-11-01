@@ -20,18 +20,9 @@ domains:
 - domain: blockulator.whalegames.net
   type: ALIAS
   zone: whalegames.net
-# the game's old subdomain: index.html's redirect map sends it to /drunken-robot/
-- domain: drunkenrobot.whalegames.net
-  type: ALIAS
-  zone: whalegames.net
 ingress:
   rules:
-  # longest prefix first; the prefix is stripped, so /drunken-robot/assets/x.js is the game's dist/assets/x.js
-  - component:
-      name: drunken-robot
-    match:
-      path:
-        prefix: /drunken-robot
+  # a game at its own path goes first (longest prefix first); its prefix is stripped before the component sees it
   - component:
       name: site
     match:
@@ -44,14 +35,5 @@ static_sites:
     branch: main
     deploy_on_push: true
   output_dir: /
-  index_document: index.html
-  catchall_document: index.html
-- name: drunken-robot
-  github:
-    repo: SamReeves/drunken-robot
-    branch: main
-    deploy_on_push: true
-  build_command: npm ci && npm run build
-  output_dir: dist
   index_document: index.html
   catchall_document: index.html
